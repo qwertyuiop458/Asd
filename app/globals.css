@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 20% 8%;
+    --foreground: 220 10% 95%;
+    --card: 220 20% 12%;
+    --card-foreground: 220 10% 95%;
+    --popover: 220 20% 10%;
+    --popover-foreground: 220 10% 95%;
+    --primary: 142 70% 45%;
+    --primary-foreground: 220 20% 8%;
+    --secondary: 220 15% 20%;
+    --secondary-foreground: 220 10% 90%;
+    --muted: 220 15% 18%;
+    --muted-foreground: 220 10% 60%;
+    --accent: 38 90% 50%;
+    --accent-foreground: 220 20% 8%;
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 220 10% 95%;
+    --border: 220 15% 20%;
+    --input: 220 15% 18%;
+    --ring: 142 70% 45%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-muted;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-secondary rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary/50;
+}
+
+/* Terminal animation */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.cursor-blink::after {
+  content: '|';
+  animation: blink 1s infinite;
+  @apply text-primary;
+}
+
+/* Pixel grid overlay */
+.pixel-grid {
+  background-image: 
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 8px 8px;
+}
